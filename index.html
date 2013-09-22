@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Tutoriel Grails</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- CSS -->
+<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="./css/bootstrap-responsive.css" rel="stylesheet">
+<link href="./css/tutoriel.css" rel="stylesheet">
+<link href="./css/shCore.css" rel="stylesheet">
+<link href="./css/shCoreDefault.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="./js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+
+	<div id="wrap">
+
+		<!-- Begin page content -->
+		<div class="container">
+			<div class="page-header">
+				<h1>Tutoriel Coding Dojo Grails / Application Cave à Vin</h1>
+			</div>
+
+			<p class="lead" style="text-align: center;"><img alt="" src="./image/cave_vin_logo.png"></p>
+			<p class="lead" style="text-align: center;"><img alt="" src="./image/grails_logo.png"></p>
+
+			<div class="accordion" id="accordion">
+			
+				<!-- Step 0 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step0"> <strong>Etape 0 : Introduction</strong> </a>
+					</div>
+					<div id="step0" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<p>Ce tutoriel est destiné à appréhender le framework Grails de manière ludique, en construisant pas à pas une application simplifiée qui aura pour objectif de gérer une cave à vin personnelle.<p />
+							<p>Les étapes sont progressives et permettent à chacun d'avancer à son rythme</p>
+							<p>Au fur et à mesure des étapes, des exercices plus ou moins simples sont proposés, et des liens vers la documentation Grails vous permettent de vous aider à les résoudre.</p>
+							<p>En tout état de cause, une solution est proposée pour chaque exercice, vous êtes libre de la regarder ou pas lors de la résolution de l'exercice.</p><br /> 
+							Bienvenue sur le Framework Grails !<br />							
+						</div>
+					</div>
+				</div>	
+			
+				<!-- Step 1 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step1"> <strong>Etape 1 : Initialisation de l'environnement </strong> </a>
+					</div>
+					<div id="step1" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<p>Ce chapitre décrit comment initialiser l'environnement avec Eclipse GGTS.</p>
+                        <p>Vous pouvez récupérer la dernière version à jour <a href="http://grails.org/products/ggts" target="_blank">ici</a>.</p>
+                        <p>Pour ceux qui préfèrent utiliser un autre IDE, vous pouvez passer directement à l'étape 2.</p>
+                        <p>Une fois Eclipse installé : </p>
+						<ul>
+							<li>Démarrer Eclipse</li>
+							<li>Créer un nouveau projet : <strong>File / New / Grails Project</strong> et lui donner le nom <strong>dojo-cave-vin</strong> : 
+								<img alt="" src="./image/step1.1.png">
+							</li>
+							<li>Démarrer le serveur d’application :
+								<ul>
+									<li>Clic droit sur le projet</li>
+									<li><strong>Run as / Grails command (run-app)</strong></li>
+									<li>Ouvrir le lien <a href="http://localhost:8080/dojo-cave-vin/" target="_blank">http://localhost:8080/dojo-cave-vin/</a> :
+										<img alt="" src="./image/step1.2.png">
+									</li>
+								</ul>
+							</li>
+						</ul>
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- Step 2 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step2"> <strong>Etape 2 : Premiers pas</strong> </a>
+					</div>
+					<div id="step2" class="accordion-body collapse">
+						<div class="accordion-inner">
+							
+								<p>Grails utilise un mécanisme de scripts pour générer automatiquement du code ou pour exécuter des commandes du framework (build, test, démarrage du serveur, ...)<br />
+								Sous Eclipse, il est possible d'appeler directement les commandes Grails depuis une console intégrée.
+								Pour afficher la console, utiliser le raccourci <strong>Ctrl + Alt + Shift + G</strong> : 
+								<img alt="" src="./image/step2.1.png">
+								</p>
+								<p>La commande <code>help</code> affiche la liste des commandes disponibles, le raccourci <code>Ctrl + Espace</code> permet d'auto-completer les commandes disponibles.</p>
+								<br />
+								<h4>Premier Contrôleur</h4>
+								<div class="alert alert-success"><b>Exercice</b></div>
+								<ul>
+									<ul>
+										<li>Créer un premier contôleur à partir de la commande <code>create-controller dojo.grails.Home</code></li> 
+										<li>Afficher à l'écran le texte "Hello Cave à vin"</li>
+										<li>Tester le rechargement à chaud.</li>
+									</ul>
+									
+								</ul>
+								
+								<ul>
+									<li>Aide : 
+										<ul>
+											<li><a href="http://grails.org/doc/2.2.x/ref/Controllers/render.html" target="_blank">http://grails.org/doc/2.2.x/ref/Controllers/render.html</a></li>
+										</ul>
+									</li>
+								</ul>
+							<button type="button" class="btn btn-success" onclick="showSolution('solutionStep2')">Solution</button>
+							<div id="solutionStep2" class="solution">
+								<code>HomeControlleur.groovy</code>
+								<pre class="brush: groovy">
+									package dojo.grails
+									
+									class HomeController {
+									
+									    def index() { 
+									        render "Hello Cave à vin !"
+									    }
+									}									
+								</pre>
+							</div>
+							
+							<br /><br />
+							
+								<h4>Première Vue</h4>
+								<p>Par convention, les vues sont placées dans le répertoire <strong>views</strong>, et prennent pour extension gsp (Grails Server Page).</p>
+								<div class="alert alert-success"><b>Exercice</b></div>
+								<ul>
+									<li>
+										<ul>
+											<li>Créer une vue <code>index.gsp</code> dans le répertoire <strong>views/home</strong></li> 
+											<li>Appliquer le layout <strong>main</strong> à cette vue</li>
+											<li>Afficher dans la vue la chaine "Hello Cave à vin !" en utilisant une variable dynamique <strong>value</strong> retournée par le contrôleur <code>HomeController.groovy</code> et qui contiendra la chaine "Cave à vin".</li>
+										</ul>
+									</li>
+								</ul>
+								<br />
+								<p>Grails utilise la notation Grails EL (Expression Language) pour mapper les variables de la vue avec les informations transmises par les actions du contrôleur.</p>
+								<ul>
+									<li>Aide : 
+										<ul>
+											<li><a href="http://grails.org/doc/latest/guide/theWebLayer.html#layouts" target="_blank">http://grails.org/doc/latest/guide/theWebLayer.html#layouts</a></li>
+											<li><a href="http://grails.org/doc/latest/guide/theWebLayer.html#modelsAndViews" target="_blank">http://grails.org/doc/latest/guide/theWebLayer.html#modelsAndViews</a></li>
+										</ul>
+									</li>								
+									</ul>
+							
+							<button type="button" class="btn btn-success" onclick="showSolution('solutionStep22')">Solution</button>
+							<div id="solutionStep22" class="solution">
+								<code>HomeControlleur.groovy</code>
+								<pre class="brush: groovy; highlight: [7]">
+									package dojo.grails
+									
+									class HomeController {
+									
+									    def index() { 
+									       def value = “Cave à vin“
+									       [value:value]
+									    }
+									
+									}			
+								</pre>
+								<br />
+								<code>views/home/index.gsp</code>
+								<script type="syntaxhighlighter" class="brush: js; highlight: [4, 7]"><![CDATA[
+									<!DOCTYPE html>
+									<html>
+									  <head>
+									    <meta name="layout" content="main" />
+									  </head>
+									  <body>
+									    Hello  ${value} !
+									  </body>
+									</html>
+								]]></script>
+							</div>							
+														
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- Step 3 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step3"> <strong>Etape 3 : Plugins et mise en place de la sécurité</strong> </a>
+					</div>
+						<div id="step3" class="accordion-body collapse">
+							<div class="accordion-inner">
+							<h4>Gestion des plugins</h4>
+							<p>L'une des forces du framework Grails tient dans le nombre importants de plugins mis à disposition par la communauté ou directement par SpringSource.<br />
+	Pour en être persuadé, jetez un oeil à la page <a href="http://grails.org/plugins/?filter=all" target="_blank">Plugins</a> qui propose plus de 900 plugins.
+	Bien souvent, lorsque l'on recherche une fonctionnalité particulière, l'un des premiers réflexes est d'aller vérifier si un plugin existe déjà pour le besoin identifié et si ce dernier répond au besoin.<br />
+	En particulier, on y trouve le plugin <strong>spring-security-core</strong> qui va prendre en charge dans le cadre de notre application la gestion de la sécurité, des utilisateurs, des rôles et bien plus encore.</p>
+	
+							<div class="alert alert-error">
+								Arrêter le serveur d'application avant d'installer un plugin.
+							</div>
+	
+							<p>Pour installer un plugin, rien de plus simple, il suffit d'ouvrir le fichier <code>BuildConfig.groovy</code> du répertoire conf et d'ajouter une entrée dans la section <strong>plugins</strong>.<br />
+							   Pour Spring Security, ajouter la ligne suivante : <code>compile ":spring-security-core:1.2.7.3"</code>
+							</p>
+							
+							<p>
+							Exécuter la commande <code>compile</code> afin que Grails récupère depuis Internet les dépendances nécessaires : <br />
+							<img alt="" src="./image/step3.1.png">
+							</p>   
+							
+							<h4>Intégration des composants de sécurité</h4>
+							<p>Comme nous pouvons le voir avec ce plugin, le mécanisme de commandes Grails est extensible.<br />
+							En particulier, nous voyons que Spring Security a enrichi le jeu de commandes avec le script <strong>s2-quickstart</strong><br />
+							Ce script permet de générer le code des objets <strong>User</strong>, <strong>Role</strong> et <strong>UserRole</strong>, ainsi que les contrôleurs et vues qui permettent de tirer profit des mécanismes de sécurité fournis par Spring Security.<br />
+							Exécutons ce script en précisant le package cible <code>s2-quickstart dojo.grails User Role</code> : <br />
+							<img alt="" src="./image/step3.2.png">
+							</p>
+	
+							<br />
+							<p>Nous allons maintenant ouvrir le fichier <code>Config.groovy</code> et modifier la configuration Spring Security de sorte à :
+							<ul>
+								<li>Permettre aux personnes anonymes d'accéder au formulaire d'authentification ;</li> 
+								<li>N'autoriser l'accès au reste de l'application que pour les personnes ayant le rôle <strong>ROLE_USER</strong>.</li>
+							</ul>
+							
+							<p>Plus d'infos sur le plugin Spring Security <a href="http://grails-plugins.github.io/grails-spring-security-core/" target="_blank">ici</a>.</p>
+						
+							<div>
+								<code>Config.groovy</code>
+								<pre class="brush: groovy">
+								...
+								
+								// Filtrage de l'acces à l'application sur le role USER
+								grails.plugins.springsecurity.securityConfigType = "InterceptUrlMap"
+								grails.plugins.springsecurity.interceptUrlMap = [
+									 '/login/*': ['ROLE_ANONYMOUS'],
+									 '/**': ['ROLE_USER']
+								]								
+								</pre>
+							</div>						
+							
+							<br />
+							<p>Modifions les messages affichés à l'écran sur la page de connexion :</p><br />
+							<div>
+								<code>messages.properties</code>
+								<pre class="brush: groovy">
+								...
+								
+								# Messages Authentification
+								springSecurity.login.header=Connexion Cave à Vin
+								springSecurity.login.username.label=Login
+								springSecurity.login.password.label=Mot de passe
+								springSecurity.login.remember.me.label=Se souvenir de moi
+								springSecurity.login.button=Ok			
+								springSecurity.errors.login.fail=Impossible de se connecter	
+								</pre>				
+							</div>
+							
+							<p>Lorsqu'on redémarre l'application, on obtient bien : </p>
+							<img alt="" src="./image/step3.3.png">
+							
+							<br /><br />
+							<div class="alert alert-error">
+								A présent, les accès sont bien protégés mais aucune données n'a été créée en base pour authentifier un utilisateur !<br />
+								Ajoutons le jeu de données à la prochaine étape.
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- Step 4 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step4"> <strong>Etape 4 : Gestion des types d'environnement et Chargement de données</strong> </a>
+					</div>
+					<div id="step4" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<h4>Gestion des environnements</h4>
+						<p>De manière native, Grails offre une gestion multi-environnement qui permet d'adapter la configuration de l'application de manière spécifique à chaque environnement cible :</p>
+						<ul>
+							<li>development : environnement par défault (phase de développement)</li>
+							<li>test : utilisé pour l'exécution des tests unitaires</li>
+							<li>production : environnement configuré pour la production</li>
+							<li>... tout autre environnement spécifique</li>
+						</ul>
+						
+						La configuration propre à chaque environnement se retrouve essentiellement dans les fichiers <code>Config.groovy</code> et <code>DataSource.groovy</code><br />
+						Exemple dans <code>DataSource.groovy</code> : <br />
+						<div>
+							<pre class="brush: groovy">
+									environments {
+									    development {
+									        dataSource {
+									            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+									            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+									        }
+									    }
+									    test {
+									        dataSource {
+									            dbCreate = "update"
+									            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+									        }
+									    }
+									    production {
+									        dataSource {
+									            dbCreate = "update"
+									            ...
+									        }
+									    }
+									}
+							</pre>
+						</div>
+						
+						<h4>Chargement de données</h4>
+						<p>Grails propose de manière native un mécanisme qui permet d'initialiser un jeu de données au démarrage de l'application.<br />
+						Pour cela, Grails fournit le fichier <code>BootStrap.groovy</code> exécuté lors de chaque démarrage.<br />
+						Notre application étant démarrée en environnement de type <strong>development</strong>, les données sont stockées dans une base mémoire H2.<br />
+						Nous allons créer les données qui permettent d'alimenter la base de données avec un utilisateur de test : </p>
+						
+						<div>
+							<code>BootStrap.groovy</code>
+							<pre class="brush: groovy">
+							    import grails.util.Environment
+								import dojo.grails.Role
+								import dojo.grails.User
+								import dojo.grails.UserRole
+							    
+							    class BootStrap {
+							    
+								    def init = { servletContext ->
+										if (Environment.current == Environment.DEVELOPMENT) {
+											def roleUser = new Role(authority: 'ROLE_USER').save()
+											def user = new User(username: 'dojo', password: 'dojo', enabled: true).save()
+											UserRole.create user, roleUser, true
+										}
+								    }
+								    
+								    ...
+							    }								
+							</pre>
+						</div>
+						<br />
+						On peut désormais redémarrer et se connecter avec le compte <strong>dojo/dojo</strong>.
+					</div>
+					</div>
+				</div>
+				
+				<!-- Step 5 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step5"> <strong>Etape 5 : Templates Grails et Look and Feel</strong> </a>
+					</div>
+					<div id="step5" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<h4>Templates Grails</h4>
+						<p>Afin de factoriser les fragments de pages, Grails offre le mécanisme de templates : il s'agit d'un fichier <strong>gsp</strong> dont le nom commence par le caractère "<strong>_</strong>".<br />
+						On peut ensuite faire appel au template à partir du tag <code>g:render</code></p>
+						
+						<p>
+							Factorisons le menu de l'application en créant un template dans le répertoire <strong>grails-app/views/menu</strong> : 
+						</p>						
+						<div>
+							<code>_nav.gsp</code>
+							<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+								<div id="nav">
+								    <ul>
+								      <li>Bienvenue, </li>
+								      <li>Se déconnecter</li>
+								    </ul>
+								
+								    <div class="homePagePanel">
+								    	<div class="panelTop"></div>
+								  		<div class="panelBody">
+								  			
+								    	</div>
+								  		<div class="panelBtm"></div>
+									</div>
+								</div>
+							]]></script>
+						</div>
+						<br />						
+						
+						<p>Maintenant, il suffit d'inclure le tag <code>&lt;g:render template="/menu/nav" /> </code> directement dans le layout global <code>grails-app/views/layouts/main.gsp</code> pour appliquer le menu à toute l’application.</p><br />
+						
+						<h4>Look and Feel</h4>
+						
+						<p>Afin d'harmoniser l'ensemble des pages, le layout et les CSS de notre application de démo ont été retravaillés.<br />
+						Pour éviter de surcharger ce tutoriel, vous pouvez recopier directement les ressources suivantes dans votre projet :
+						</p>
+						<ul>
+							<li><a href="./resources/web-app/css/main.css">web-app/css/main.css</a></li>
+							<li><a href="./resources/web-app/images/cave_vin_logo.png">web-app/images/cave_vin_logo.png</a></li>
+							<li><a href="./resources/grails-app/views/index.gsp">grails-app/views/index.gsp</a></li>
+							<li><a href="./resources/grails-app/views/layouts/main.gsp">grails-app/views/layouts/main.gsp</a></li>
+						</ul>
+						</div>
+					</div>
+				</div>
+				
+						
+
+				
+				<!-- Step 6 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step6"> <strong>Etape 6 : Taglibs et menu dynamique</strong> </a>
+					</div>
+					<div id="step6" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<h4>Taglibs</h4>
+						<p>La création d'interfaces HTML plus ou moins riches est simplifiée par l'utilisation de <code>Taglibs</code>.<br />
+						Grails propose un mécanisme de <strong>namespaces</strong> pour permettre aux plugins de proposer leur propre jeu de tags.<br />
+						Le namespace par défault de Grails est "<strong>g</strong>", celui de Spring Security est <strong>sec</strong>.
+						</p>
+						
+						<h4>Menu Dynamique</h4>
+						<div class="alert alert-success"><b>Exercice</b></div>
+						<p>Utiliser les différentes taglibs Grails et Spring Security pour arriver au résultat ci-dessous : </p><br />
+						<ul>
+							<ul>
+								<li>Gérer le lien de déconnexion (appel du controller logout sur l'action index)</li>
+								<li>Mettre un lien vers la page d'accueil (utilisation du tag g:link)</li>
+								<li>Protéger l'affichage du menu avec le tag Spring Security <code>sec:ifLoggedIn</code></li>
+							</ul>
+						</ul>						
+						<img alt="" src="./image/step7.1.png">
+						
+						<ul>
+						<li>Aide : 
+							<ul>
+								<li><a href="http://grails-plugins.github.io/grails-spring-security-core/docs/manual/guide/6%20Helper%20Classes.html#6.1%20SecurityTagLib" target="_blank">Taglib Spring Security</a></li>
+								<li><a href="http://grails.org/doc/2.2.0/ref/Tags/link.html" target="_blank">Tag link Grails</a></li>
+							</ul>
+						</li>
+						</ul>
+						
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep6')">Solution</button>
+						<div id="solutionStep6" class="solution">
+							<code>_nav.gsp</code>
+							<script type="syntaxhighlighter" class="brush: js; highlight: [1, 6, 15]"><![CDATA[
+							<sec:ifLoggedIn>
+								<div id="nav">
+									<ul>
+										<li>Bienvenue, <sec:username />
+										</li>
+										<li><g:link controller="logout" action="index">Se déconnecter</g:link></li>
+									</ul>
+							
+									<div class="homePagePanel">
+										<div class="panelTop"></div>
+							
+										<div class="panelBody">
+											<h1>Menu</h1>
+											<ul>
+												<li><g:link controller="home" action="index">Accueil</g:link></li>
+											</ul>
+										</div>
+							
+										<div class="panelBtm"></div>
+									</div>
+							
+								</div>
+							</sec:ifLoggedIn>								
+							]]></script>
+						</div>						
+						
+						</div>
+					</div>
+				</div>	
+				
+				<!-- Step 7 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step7"> <strong>Etape 7 : Modèle métier - Partie 1</strong> </a>
+					</div>
+					<div id="step7" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<h4>Modèle Métier</h4>
+						<p>Grails intègre une surcouche à Hibernate nommée GORM (Grails ORM). <br />
+						Cette couche est destinée à masquer les complexité d'Hibernate et permet de :</p>
+						<ul>
+							<li>Modéliser les objets de domaine,</li>
+							<li>Configurer le mapping avec la base de données,</li>
+							<li>Décrire les relations entre entités,</li>
+							<li>Modéliser les contraintes sur les champs,</li>
+							<li>Apporter tout l'outillage pour le requêtage : finder dynamique, recherche par Criteria, requêtes HQL</li>
+						</ul>
+						<p>Plus d'informations sur la documentation GORM <a href="http://grails.org/doc/latest/guide/GORM.html" target="_blank">ici</a></p>
+						<p>Dans le cadre de notre application, Spring Security s'étant occupé de générer les objets de domaine <strong>User</strong> et <strong>Role</strong>, il reste à modéliser les entités <strong>Cave</strong> et <strong>Bouteille</strong>.</p>
+						<br />
+						<ul>
+							<li>Pour cela :
+								<ul>
+									<li>Arrêter le serveur d'application</li>
+									<li>Créer la première entité <strong>Cave</strong> en utilisant le script Grails <code>create-domain-class dojo.grails.Cave</code></li>
+									<li>Ce script créé automatiquement deux fichiers : <code>Cave.groovy</code> et <code>CaveTests.groovy</code></li>
+									<li>Nous reviendrons plus tard sur la classe de test</li>								
+								</ul>
+							</li>
+						</ul>
+						
+						<div class="alert alert-success"><b>Exercice</b></div>
+						<ul>
+							<li>Modéliser la relation (simplifiée) uni-directionnelle 0-1 entre <strong>User</strong> et <strong>Cave</strong> :
+								<ul>
+									<li>Modifier l'entité <strong>User</strong> pour ajouter une référence à <strong>Cave</strong> et indiquer que cet attribut est nullable.</li>
+									<li>Modifier l'entité <strong>Cave</strong> pour :
+										<ul>
+											<li>Ajouter l'attribut <code>name</code> afin qu'il respecte les contraintes suivantes : unique, obligatoire, n'autorise pas de chaine vide, avec une longueur maximale de 15 caractères.</li>
+											<li>Déclarer que l'entité <strong>Cave</strong> dépend de <strong>User</strong></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						
+						<ul>
+							<li>Aide : 
+								<ul>
+									<li><a href="http://grails.org/doc/2.2.0/ref/Domain%20Classes/hasOne.html" target="_blank">http://grails.org/doc/2.2.0/ref/Domain%20Classes/hasOne.html</a></li>
+									<li><a href="http://grails.org/doc/latest/guide/GORM.html#gormConstraints" target="_blank">http://grails.org/doc/latest/guide/GORM.html#gormConstraints</a></li>
+									<li><a href="http://grails.org/doc/latest/guide/GORM.html#manyToOneAndOneToOne" target="_blank">http://grails.org/doc/latest/guide/GORM.html#manyToOneAndOneToOne</a></li>
+								</ul>
+							</li>
+						</ul>
+						
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep7')">Solution</button>
+						<div id="solutionStep7" class="solution">
+							<code>User.groovy</code>
+							<pre class="brush: groovy">
+							...							
+							Cave cave
+							...		
+							
+							static constraints = {
+								...
+								cave nullable: true
+							}
+							</pre>
+							<br />
+							<code>Cave.groovy</code>
+							<pre class="brush: groovy">
+							class Cave {
+							
+							    String name
+								
+							    static belongsTo = [user: User]
+								
+							    static constraints = {
+									name blank: false, unique: true, maxSize: 15
+							    }
+							}
+							</pre>							
+						</div>												
+						
+						</div>
+					</div>
+				</div>		
+				
+				
+				<!-- Step 8 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step8"> <strong>Etape 8 : Tests unitaires</strong> </a>
+					</div>
+					<div id="step8" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<h4>Test unitaires</h4>
+						<ul>
+							<li>Grails distingue principalement deux types de tests :
+								<ul>
+									<li>Unitaires : permettent de tester un comportement, ou une classe isolée, sans charger l'application complète ;</li>
+									<li>Intégration : exécutés en démarrant l'application complète, c'est à dire en chargeant toutes les dépendances du conteneur IOC, en exécutant le mapping ORM, en chargeant le jeu de données contenu dans <code>Bootstrap.groovy</code> dans une base de données réelle, ...</li>								
+								</ul>
+							</li>
+						</ul>
+						<p>Comme nous l'avons vu lors de la génération de la classe de domaine <strong>Cave</strong>, le script <code>create-domain-class</code> a également généré le squelette de la classe de test <code>CaveTests.groovy</code>.<br />
+						Il est temps à présent de compléter cette classe de tests.</p>
+						<div class="alert alert-success"><b>Exercice</b></div>
+						<p>Compléter le test unitaire du fichier <code>CaveTests.groovy</code> de sorte à tester les différentes contraintes, et faire en sorte que la méthode validate fournie par Grails sur les objets de domaine soit rendue passante.</p>
+						<ul>
+							<li>Aide : 
+								<ul>
+									<li>Paragraphe "Testing Constraints" du lien <a href="http://grails.org/doc/latest/guide/testing.html#unitTestingDomains" target="_blank">http://grails.org/doc/latest/guide/testing.html#unitTestingDomains</a></li>
+								</ul>
+							</li>
+						</ul>				
+						
+						<p>Vous pouvez exécuter les tests soit à partir de l'IDE : clic droit sur la classe de test puis <code>Run As / Grails command (test-app)</code>, soit via le script <code>test-app -unit CaveTests</code>.</p>
+						
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep8')">Solution</button>
+						<div id="solutionStep8" class="solution">
+							<code>CaveTests.groovy</code>
+							<pre class="brush: groovy">
+								@TestFor(Cave)
+								class CaveTests {
+								
+								    void testCaveConstraints() {
+								       def cave = new Cave(name: "cave")
+								
+									   // Permet de mocker la methode validate
+									   mockForConstraintsTests(Cave, [cave])
+									   
+									   // Test sans user attache a l'instance de cave
+									   assertFalse cave.validate()
+									   
+									   // Test nullable
+									   def testCave = new Cave()
+									   assertFalse testCave.validate()
+								       assertEquals "nullable", testCave.errors["name"]
+								
+									   // Test blank
+									   testCave = new Cave(name: "")
+									   assertFalse testCave.validate()
+									   assertEquals "blank", testCave.errors["name"]
+									   
+									   // Test maxSize
+									   testCave = new Cave(name: "Mon nom de cave beaucoup trop long")
+									   assertFalse testCave.validate()
+									   assertEquals "maxSize", testCave.errors["name"]
+									   
+									   // Test unique
+									   testCave = new Cave(name: "cave")
+									   assertFalse testCave.validate()
+									   assertEquals "unique", testCave.errors["name"]
+									   
+									   // Test ok
+									   User fakeUser = new User(username: 'fake', password: 'fake')
+									   testCave = new Cave(name: "Ma cave", user: fakeUser)
+									   assertTrue testCave.validate()
+									   assertEquals 'fake', testCave?.user?.username
+								    }
+								}
+							</pre>
+						</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Step 9 -->
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse"
+							data-parent="#accordion" href="#step9"> <strong>Etape 9 : Modèle métier - Partie 2</strong> </a>
+					</div>
+					<div id="step9" class="accordion-body collapse">
+						<div class="accordion-inner">
+						<h4>Modèle métier - Partie 2</h4>
+						<p>Ajoutons à présent le relation OneToMany entre <strong>Cave</strong> et <strong>Bouteille</strong>.</p>
+						
+						<div class="alert alert-success"><b>Exercice</b></div>
+						<ul>
+							<li>
+								<ul>
+									<li>Créer la classe de domaine <strong>Bouteille</strong></li>
+									<li>Ajouter les attributs : 
+										<ul>
+											<li>label : chaine unique non vide</li>
+											<li>millesime : entier compris entre 1900 et 2013</li>
+											<li>photo : attribut de type binaire, non obligatoire, avec une taille max de 65Ko (maxSize: 65536)</li>
+										</ul>
+									</li>
+									<li>Configurer la relation OneToMany entre <strong>Cave</strong> et <strong>Bouteille</strong> et configurer le mapping de sorte à supprimer les instances <Strong>Bouteille</Strong> orphelines en cascade lors de la suppression d'une <strong>Cave</strong>.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<ul>
+							<li>Aide : 
+								<ul>
+									<li><a href="http://grails.org/doc/latest/ref/Database%20Mapping/cascade.html" target="_blank">http://grails.org/doc/latest/ref/Database%20Mapping/cascade.html</a></li>
+								</ul>
+							</li>
+						</ul>				
+						
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep9')">Solution</button>
+						<div id="solutionStep9" class="solution">
+							<code>Bouteille.groovy</code>
+							<pre class="brush: groovy">		
+							class Bouteille {
+							
+								String label
+								Integer millesime
+								byte[] photo
+								
+								static belongsTo = [cave: Cave]
+								
+							    static constraints = {
+									label blank: false, unique: true
+									millesime min: 1900, max: 2013
+									photo nullable: true, maxSize: 65536
+							    }
+							}							
+							</pre>
+							<br />
+							<code>Cave.groovy</code>
+							<pre class="brush: groovy">
+							class Cave {
+								...
+								
+								static hasMany = [bouteilles: Bouteille]
+									
+							    static mapping = {
+							        bouteilles cascade: 'all-delete-orphan'
+							    }
+							    
+								...	
+							}
+								
+							</pre>
+						</div>				
+						</div>
+					</div>
+				</div>				
+												
+			<!-- Step 10 -->
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse"
+						data-parent="#accordion" href="#step10"> <strong>Etape 10 : Tests d'intégration</strong> </a>
+				</div>
+				<div id="step10" class="accordion-body collapse">
+					<div class="accordion-inner">
+					<h4>Tests d'intégration</h4>
+					<p>Afin d'éprouver notre modèle complet en condition réelle, écrivons notre premier test d'intégration.</p>
+					<p>Pour créer le squelette de la classe de test, exécutons le script <code>create-integration-test dojo.grails.CaveIntegration</code></p>
+					
+					
+					<div class="alert alert-success"><b>Exercice</b></div>
+					<p>Compléter la classe de test en créant une instance Cave, contenant deux bouteilles et en faisant des tests sur le résultat après enregistrement en base de données.<br />
+					Vous pourrez utiliser la methode <code>.save(failOnError: true, flush: true)</code> pour la sauvegarde, la méthode dynamique <code>addTo</code> pour ajouter une bouteille à la collection de bouteilles de la cave, ainsi que le finder dynamique <code>findByUsername</code> pour retrouver l'utilisateur que vous aurez créer au préalable dans la méthode <code>setUp()</code> de la classe de test.</p>
+					
+					<ul>
+						<li>Aide : 
+							<ul>
+								<li><a href="http://grails.org/doc/latest/ref/Domain%20Classes/save.html" target="_blank">http://grails.org/doc/latest/ref/Domain%20Classes/save.html</a></li>
+								<li><a href="http://grails.org/doc/latest/ref/Domain%20Classes/addTo.html" target="_blank">http://grails.org/doc/latest/ref/Domain%20Classes/addTo.html</a></li>
+							</ul>
+						</li>
+					</ul>							
+				
+					<button type="button" class="btn btn-success" onclick="showSolution('solutionStep10')">Solution</button>
+					<div id="solutionStep10" class="solution">
+						<code>CaveIntegrationTests.groovy</code>
+						<pre class="brush: groovy">
+						class CaveIntegrationTests {
+						
+						    @Before
+						    void setUp() {
+						        // Setup logic here
+								new User(username: 'test', password: 'test').save(flush: true)
+						    }
+						
+						    @After
+						    void tearDown() {
+						        // Tear down logic here
+						    }
+						
+						    @Test
+						    void "Creation nominale d'une Cave avec liste de bouteilles"() {
+								// On recupere le user de test
+								def user = User.findByUsername('test')
+								assertNotNull user
+								
+						        def cave = new Cave(name: "Ma cave", user: user)
+								def bouteille1 = new Bouteille(label: "Ma bouteille 1", millesime: 2012)
+								def bouteille2 = new Bouteille(label: "Ma bouteille 2", millesime: 2012)
+								cave.addToBouteilles(bouteille1);
+								cave.addToBouteilles(bouteille2);
+								cave.save(failOnError: true, flush: true)
+								
+								assertNotNull cave
+								assertNotNull cave.name
+								def found = Cave.findByName("Ma cave")
+								assertEquals 'Ma cave', found.name
+								assertEquals found.bouteilles*.millesime, [2012, 2012]
+						    }
+						}							
+						</pre>
+					</div>
+				  </div>		
+				</div>
+			</div>
+
+			<!-- Step 11 -->
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse"
+						data-parent="#accordion" href="#step11"> <strong>Etape 11 : Scaffolding dynamique et statique</strong> </a>
+				</div>
+				<div id="step11" class="accordion-body collapse">
+					<div class="accordion-inner">
+						<h4>Scaffolding</h4>
+						<p>Le mécanisme de Scaffolding apporté par Grails permet de générer automatiquement les vues et les actions de contrôleur permettant de traiter automatiquement les aspects CRUD d'un objet de domaine, en tenant compte des contraintes, et du mapping d'un objet métier.</p><br />
+						
+						<h4>Prérequis</h4>
+						<p>Pour simplifier le mécanisme dans l'application de démo "Cave à Vin", nous ne génèrerons que le Scaffolding de l'objet <strong>Bouteille</strong> ; pour cela, modifions le fichier <code>BootStrap.groovy</code> pour associer directement une instance de <strong>Cave</strong> à notre utilisateur <strong>ogil</strong> :</p><br />
+						
+						<div>
+							<code>BootStrap.groovy</code>
+							<pre class="brush: groovy">
+							...
+							
+							// Simplification du jeu de données
+							Cave cave = new Cave(id: 1L, name: "Ma Cave perso", user: user).save(flush: true)
+							
+							...								
+							</pre>
+						</div>	
+						
+						<br />
+						<p>Modifions le mapping d'URL de la page d'accueil par défaut pour utiliser notre contrôleur <strong>Home</strong> déclaré au début du tutoriel :</p>
+						<div>
+							<code>UrlMappings.groovy</code>
+							<pre class="brush: groovy; highlight: [8]">
+							static mappings = {
+								"/$controller/$action?/$id?"{
+									constraints {
+										// apply constraints here
+									}
+								}
+						
+								"/"(controller:"home", action:"/index")
+								"500"(view:'/error')
+							}			
+							</pre>
+						</div>								
+						
+						<br />
+						<p>Modifions notre contrôleur <strong>Home</strong> pour récupérer notre cave à vin :</p>
+						<div>
+							<code>HomeControlleur.groovy</code>
+							<pre class="brush: groovy">
+							    def index() { 
+									Cave cave = Cave.get(1L)
+									[cave: cave]
+								}							
+							</pre>
+						</div>
+						
+						<br />
+						<p>Modifions la vue <strong>views/home/index.gsp</strong> pour afficher le nom de notre cave :</p>
+						<div>
+							<code>views/home/index.gsp</code>
+							<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+								<body>
+									<h1>Bienvenue dans ${cave?.name} !</h1>
+								</body>					
+							]]></script>						
+						</div>												
+						
+						<br />
+						<p>Démarrer le serveur et vérifier le résultat :</p>
+						<img alt="" src="./image/step11.1.png">
+						
+						<h4>Scaffolding Dynamique</h4>
+						<p>Faisons un premier essai en testant le Scaffolding dynamique sur l'entité <strong>Bouteille</strong> : </p>
+						<code>create-controller dojo.grails.Bouteille</code><br />
+						
+						<br />
+						<p>Modifier le contrôleur : </p>
+						<div>
+							<code>BouteilleController.groovy</code>
+							<pre class="brush: groovy">
+							class BouteilleController {
+							
+								static scaffold = true
+							}
+							</pre>						
+						</div>								
+						
+						<br />
+						<p>Ajoutons une entrée dans le menu gauche pour accéder à la page de gestion des bouteilles :</p>
+						
+						<div>
+							<code>views/menu/_nav.gsp</code>
+							<script type="syntaxhighlighter" class="brush: js; highlight: [3]"><![CDATA[
+								<ul>
+									<li><a href="${createLinkTo(dir:'')}">Accueil</a></li>
+									<li><g:link controller="bouteille">Bouteilles</g:link></li>
+								</ul>				
+							]]></script>						
+						</div>
+						
+						<br />
+						<p>Redémarrer et essayer de créer une bouteille avec des données erronées, on obtient :</p>
+						<img alt="" src="./image/step11.2.png">
+						
+						<br />
+						<p>Créer une bouteille avec des données correctes : les différentes fonctions CRUD sont opérationnelles :</p>
+						<img alt="" src="./image/step11.3.png">
+						
+						<h4>Scaffolding statique</h4>
+						<p>Sans avoir écrit une seule ligne de code, nous avons déjà obtenu résultat interessant avec le Scaffolding statique.<br />
+						 Toutefois, on se rend bien compte que ce n'est pas adapté à une utilisation directe en production.<br />
+						 Voyons à présent comment Grails peut nous aider à améliorer notre productivité, tout en continuant à nous faire profiter de la puissance du Scaffolding, mais en utilisant cette fois le Scaffolding statique.</p><br />
+													 
+						<p>Utilisons cette fois la commande suivante : </p><br />
+						<code>generate-all dojo.grails.Bouteille</code><br />
+						<p>Accepter l'overwrite des fichiers au prompt dans la console.</p>
+						
+						<br />
+						<p>Cette fois, le contrôleur <code>BouteilleController.groovy</code>, la classe de test <code>BouteilleControllerTests.groovy</code> ainsi que l'ensemble des vues <code>views/bouteille/*</code> ont été générés.<br />
+						Cela nous permet d'avoir un contrôle complet sur l'ensemble des éléments générés par le Scaffolding.</p>
+						
+						<div class="alert alert-success"><b>Exercice</b></div>
+						<p>Retoucher les différentes vues pour améliorer le rendu des différentes pages. A minima, retoucher les vues <strong>list</strong>, <strong>show</strong> ainsi que le contrôleur pour faire en sorte d'afficher les photos des bouteilles.</p>
+						<p>Vous pouvez utiliser les images de bouteilles mis à disposition dans le dossier <strong>image/bouteilles</strong> du tutoriel.</p>
+						<ul>
+							<li>Aide : 
+								<ul>
+									<li>Pour afficher une image binaire, vous pouvez utiliser l'action suivante dans le contrôleur <strong>BouteilleController</strong> : 
+									
+										<div>
+											<code>BouteilleController.groovy</code>
+											<pre class="brush: groovy">
+											class BouteilleController {
+												...
+												
+												def displayPhoto() {
+													if (!params.id) {
+														response.sendError(404)
+														return
+													}
+											
+													def bouteille = Bouteille.get(params.id)
+													if (bouteille.photo) {
+														byte[] image = bouteille.photo
+														response.setHeader('Cache-Control', 'no-cache')
+														response.outputStream << image
+														response.outputStream.flush()
+													}
+												}												
+											}
+											</pre>						
+										</div>
+									</li>
+									<li><a href="http://grails.org/doc/latest/ref/Tags/createLink.html" target="_blank">Tag createLink</a></li>
+								</ul>
+							</li>
+						</ul>
+						
+						
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep11')">Solution</button>
+						<div id="solutionStep11" class="solution">
+							<code>views/bouteille/list.gst</code>
+							<script type="syntaxhighlighter" class="brush: js; highlight: [8]"><![CDATA[
+								<g:each in="${bouteilleInstanceList}" status="i" var="bouteilleInstance">
+									<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+									
+										<td><g:link action="show" id="${bouteilleInstance.id}">${fieldValue(bean: bouteilleInstance, field: "label")}</g:link></td>
+									
+										<td>${fieldValue(bean: bouteilleInstance, field: "millesime")}</td>
+									
+										<td><img class="photo-mini" src='<g:createLink action="displayPhoto" id="${bouteilleInstance.id}"/>' /></td>
+										<td>${fieldValue(bean: bouteilleInstance, field: "cave")}</td>
+									
+									</tr>
+								</g:each>	
+							]]></script>						
+						</div>
+							
+						<br />
+						<p>Pour en savoir plus sur le scaffolding : <a href="http://grails.org/doc/latest/guide/scaffolding.html" target="_blank">ici</a>.<br />
+						En particulier, vous verrez qu'il est possible de customiser entièrement les templates utilisés par Grails pour la génération du code du contrôleur, vues, et classes de test : <a href="http://grails.org/doc/latest/ref/Command%20Line/install-templates.html" target="_blank">http://grails.org/doc/latest/ref/Command%20Line/install-templates.html</a>
+						</p> 
+					</div>
+				</div>
+			</div>
+			
+						
+			<!-- Step 12 -->
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse"
+						data-parent="#accordion" href="#step12"> <strong>Etape 12 : Services</strong> </a>
+				</div>
+				<div id="step12" class="accordion-body collapse">
+					<div class="accordion-inner">
+						<h4>Services Métiers</h4>
+						<p>Bien que les services métiers ne soient pas directement intégrés dans la génération du Scaffolding, Grails recommande fortement de déplacer la logique métier dans des méthodes de services, qui permettent de mieux réutiliser le code, et qui prennent aussi en charge les aspects transactionnels.<br />
+						Dans le cadre de notre application de démo, crééons notre premier et unique service <strong>CaveVinService</strong>, à partir de la commande Grails <code>create-service dojo.grails.CaveVinService</code>.
+						</p>
+						
+						<br />
+						<div class="alert alert-success"><b>Exercice</b></div>
+						
+						<p>Ajoutez une méthode de service qui permettra de récupérer les 5 dernières bouteilles créées par l'utilisateur connecté.<br />
+						Amusez-vous à écrire la requête de récupération en HQL, Criteria et via le mécanisme de Finders dynamiques.<br />
+						Tester les trois méthodes avec un test d'intégration généré à partir de la commande : <code>create-integration-test dojo.grails.CaveVinServiceIntegration</code></p>
+						
+						<ul>
+							<li>Aide : 
+								<ul>
+									<li>L'injection de dépendances est réalisée par nom. Par exemple, pour injecter le service <strong>SpringSecurityService</strong> 
+									qui permet de récupérer l'utilisateur courant, on déclarera un attribut : <code>SpringSecurityService springSecurityService</code></li>
+									<li>L'utilisateur courant peut être récupéré en appelant <code>springSecurityService.getCurrentUser()</code></li> 
+									<li><a href="http://grails.org/doc/latest/guide/services.html" target="_blank">Services Grails</a></li>
+									<li><a href="http://grails.org/doc/2.2.x/ref/Domain%20Classes/findAllBy.html" target="_blank">Finders dynamiques</a></li>
+									<li><a href="http://grails.org/doc/latest/ref/Domain%20Classes/executeQuery.html" target="_blank">Requêtes HQL</a></li>
+									<li><a href="http://grails.org/doc/2.2.x/ref/Domain%20Classes/createCriteria.html" target="_blank">Requêtes avec Criteria</a></li>
+								</ul>
+							</li>
+						</ul>							
+						
+						<br />
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep12')">Solution</button>
+						<div id="solutionStep12" class="solution">
+							<code>CaveVinService.groovy</code>						
+							<pre class="brush: groovy;">
+							class CaveVinService {
+							
+								static transactional = false
+								
+								// Injection du service Spring Security
+								SpringSecurityService springSecurityService
+								
+								final static int LIMIT = 5
+								
+							    def findBouteillesRecentesByDynamicFinder() {
+									def current = springSecurityService.getCurrentUser()
+									return Bouteille.findAllByCave(current.cave, [max: LIMIT, sort: "id", order: "desc"])
+								}
+								
+								def findBouteillesRecentesByHQL() {
+									def current = springSecurityService.getCurrentUser()
+									return Bouteille.executeQuery("FROM Bouteille b where b.cave = :cave order by b.id desc",
+							                     [cave: current.cave, max: LIMIT])
+								}						
+								
+							    def findBouteillesRecentesByCriteria() {
+									def current = springSecurityService.getCurrentUser()
+									def criteria = Bouteille.createCriteria()
+									criteria.list {
+										cave {
+											eq('id', current.cave?.id)
+										}
+										maxResults LIMIT
+										order 'id','desc'
+									}
+								}
+							}														
+							</pre>
+							
+							<br />
+							<code>CaveVinServiceIntegrationTests.groovy</code>						
+							<pre class="brush: groovy;">
+							class CaveVinServiceIntegrationTests {
+								// Injection des services
+								def springSecurityService
+								CaveVinService caveVinService
+								
+								// Donnees de test attendues
+								static final expectedList =  ['bouteille6', 'bouteille5', 'bouteille4', 'bouteille3', 'bouteille2']
+								static final expectedNumber = 5
+								
+							    @Before
+							    void setUp() {
+							        
+									def user = new User(username: 'test', password: 'test').save(flush: true)
+							
+									// Force l'authentification du user 'test'
+									springSecurityService.reauthenticate 'test'
+									
+									def cave = new Cave(name: "Ma cave", user: user)
+									int index = 1
+									def bouteille
+									
+									6.times {
+										bouteille = new Bouteille(label: 'bouteille' + index, millesime: 1950)
+										cave.addToBouteilles(bouteille)
+										// On force la sauvegarde à chaque iteration pour garantir l'ordre de creation pour notre test
+										cave.save(flush: true)
+										index++
+									}
+									
+							    }
+							
+							    @Test
+							    void "Recherche des bouteilles recentes par dynamic finders"() {
+							        def bouteilles = caveVinService.findBouteillesRecentesByDynamicFinder()
+									assertEquals bouteilles.size, expectedNumber
+									assertEquals bouteilles*.label, expectedList
+							    }
+								
+								@Test
+								void "Recherche des bouteilles recentes par HQL"() {
+									def bouteilles = caveVinService.findBouteillesRecentesByHQL()
+									assertEquals bouteilles.size, expectedNumber
+									assertEquals bouteilles*.label, expectedList
+								}								
+								
+								@Test
+								void "Recherche des bouteilles recentes par Criteria"() {
+									def bouteilles = caveVinService.findBouteillesRecentesByCriteria()
+									assertEquals bouteilles.size, expectedNumber
+									assertEquals bouteilles*.label, expectedList
+								}
+								
+								@After
+								void tearDown() {
+									// Tear down logic here
+								}
+							}													
+							</pre>							
+					</div>
+				</div>
+			</div>	
+			</div>		
+			
+			<!-- Step 13 -->
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse"
+						data-parent="#accordion" href="#step13"> <strong>Etape 13 : Grails et Ajax</strong> </a>
+				</div>
+				<div id="step13" class="accordion-body collapse">
+					<div class="accordion-inner">
+						<h4>Grails et Ajax</h4>
+						<p>Terminons notre application de démo en intégrant une fonctionnalité Ajax, de sorte à voir comment Grails addresse cette problématique récurrente.</p>
+						
+						<div class="alert alert-success"><b>Exercice</b></div>
+						<p>Pour faire simple, nous allons afficher en Ajax sur la page d'accueil, la liste des 5 dernières bouteilles ajoutées, en faisant appel à notre service précédenment créé.</p>
+						
+						<ul>
+							<li>Aide : 
+								<ul>
+									<li>Ajouter dans le contrôleur <strong>HomeController</strong> une action <strong>bouteillesRecentes</strong> qui fera appel à notre service <strong>CaveVinService</strong> pour retourner la liste des bouteilles récentes.</li>
+									<li>Créer une page <code>bouteillesRecentes.gsp</code> dans <strong>views/home/</strong> qui permettra d'afficher la liste des dernières bouteilles</li>
+									<li>Modifier la page <code>views/home/index.gsp</code> pour afficher au chargement de la page la liste des 5 dernières bouteilles en utilisant un appel Ajax.</li>
+									<li>Pour effectuer l'appel Ajax, vous pouvez soit utiliser une fonction standard JQuery (intégré par défault avec Grails), soit utiliser le tag Grails <strong>g:remoteFunction</strong></li>
+									<li>Les appels Javascript (JQuery ou remoteFunction) doivent être effectués a l'intérieur d'un tag <strong>g:javascript</strong></li> 
+									<li><a href="http://grails.org/doc/latest/ref/Tags/remoteFunction.html" target="_blank">Tag g:remoteFunction</a></li>
+									<li><a href="http://grails.org/doc/latest/ref/Tags/javascript.html" target="_blank">Tag g:javascript</a></li>
+								</ul>
+							</li>
+						</ul>							
+						
+						<br />
+						<button type="button" class="btn btn-success" onclick="showSolution('solutionStep13')">Solution</button>
+						<div id="solutionStep13" class="solution">
+							<code>HomeController.groovy</code>						
+							<pre class="brush: groovy;">
+							class HomeController {
+							
+								CaveVinService caveVinService
+								
+								...
+								
+								def bouteillesRecentes() {
+									[bouteilles: caveVinService.findBouteillesRecentesByCriteria()]
+								}
+							}
+							</pre>
+							
+							<br />
+							<code>views/home/bouteillesRecentes.gsp</code>
+							<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+							<div>
+								<g:if test="${bouteilles}">
+									<div class="message">
+										<h4><g:message code="bouteilles.recent.label" default="Dernières bouteilles ajoutées"/></h4>
+										<g:each var="bouteille" in="${bouteilles}">
+											<g:link controller="bouteille" action="show" id="${bouteille.id}">${bouteille.label}</g:link>
+										</g:each>
+									</div>
+								</g:if>
+								<g:else>
+							    	<g:message code="bouteilles.recent.noresult" default="Il n'y a aucune bouteille créée"/>
+							    </g:else>
+							</div>
+							]]></script>			
+							
+							<br />
+							<code>views/home/index.gsp</code>
+							<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+							<body>
+								...
+																
+								<!-- Placeholder pour l'affichage des dernieres bouteilles ajoutees -->
+								<div id="recents"></div>
+							</body>
+							
+							<!-- Solution Grails remoteFunction -->
+							<g:javascript>
+								<g:remoteFunction controller="home" action="bouteillesRecentes" method="GET" update="recents" />
+							</g:javascript>
+							
+							<!-- Solution JQuery -->
+							<g:javascript>
+								$(function(){
+									$('#recents').load('${createLink(controller:'home', action:'bouteillesRecentes')}');
+								});		
+							</g:javascript>
+							]]></script>			
+						</div>						
+						
+					</div>
+				</div>
+			</div>					
+																
+		</div>
+
+		<div id="push"></div>
+	</div>
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">
+				Tutoriel Grails <a href="mailto:laurent@dreamcat.fr?subject=[Dojo Grails]">Laurent Gu&eacute;rin</a> et <a href="mailto:elyes.terki@sopragroup.com?subject=[Dojo Grails]">Elyes
+					Terki</a>.
+			</p>
+		</div>
+	</div>
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="./js/jquery-1.8.2.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/shCore.js"></script>
+	<script src="./js/shBrushGroovy.js"></script>
+	<script src="./js/shBrushJScript.js"></script>
+	<script src="./js/tutoriel.js"></script>
+
+	<script type="text/javascript">
+		SyntaxHighlighter.defaults['toolbar'] = false;
+	    SyntaxHighlighter.all()
+	</script>
+</body>
+</html>
